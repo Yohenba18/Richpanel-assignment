@@ -11,7 +11,10 @@ const login = () => {
   };
   return (
     <Layout>
-      <form className="flex flex-col bg-white w-3/5 mx-auto py-10 rounded-md" onSubmit={handleLogin}>
+      <form
+        className="flex flex-col bg-white w-3/5 mx-auto py-10 rounded-md"
+        onSubmit={handleLogin}
+      >
         <div className="flex flex-col gap-5 w-2/3 mx-auto">
           <h1 className="text-center font-semibold text-xl">
             Login to your account
@@ -46,7 +49,10 @@ const login = () => {
               }
             />
           </div>
-          <button className="bg-background-primary rounded-md text-white py-4" type="submit">
+          <button
+            className="bg-background-primary rounded-md text-white py-4"
+            type="submit"
+          >
             Sign Up
           </button>
 

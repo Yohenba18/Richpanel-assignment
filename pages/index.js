@@ -3,11 +3,14 @@ import { useState } from "react";
 import Layout from "../components/shared/layout";
 
 export default function Home() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
   const handleSignup = (e) => {
     e.preventDefault();
+    console.log(data);
   };
 
   return (
@@ -23,8 +26,13 @@ export default function Home() {
             <input
               type="text"
               className="border-2 rounded-md px-4 py-2"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
+              value={data.name}
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  name: e.target.value,
+                })
+              }
             />
           </div>
           <div className="flex flex-col">
@@ -32,8 +40,13 @@ export default function Home() {
             <input
               type="email"
               className="border-2 rounded-md px-4 py-2"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={data.email}
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  email: e.target.value,
+                })
+              }
             />
           </div>
           <div className="flex flex-col">
@@ -41,8 +54,13 @@ export default function Home() {
             <input
               type="password"
               className="border-2 rounded-md px-4 py-2"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={data.password}
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  password: e.target.value,
+                })
+              }
             />
           </div>
           <button
