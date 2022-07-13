@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { useState } from "react";
 import Layout from "../components/shared/layout";
+import { useAuth } from "../contexts/AuthContext";
 
 export default function Home() {
+
+  const {user} = useAuth()
+  console.log(user)
   const [data, setData] = useState({
     name: "",
     email: "",
