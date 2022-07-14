@@ -8,7 +8,7 @@ const connect = () => {
   const connectAccount = () => {
     const provider = new FacebookAuthProvider();
     signInWithPopup(auth, provider)
-      .then((res) => Router.push("/chatpage"))
+      .then((res) => console.log(res.data))
       .catch((err) => console.log(err));
   };
 

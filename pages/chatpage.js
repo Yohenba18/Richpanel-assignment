@@ -1,7 +1,7 @@
 import React from "react";
-import Chatbox from "../components/chat/Chatbox";
+import Chatbox from "../components/chat/chatbox";
 import Conversations from "../components/chat/conversations";
-import User from "../components/chat/User";
+import User from "../components/chat/user";
 
 const chatpage = () => {
   return (
