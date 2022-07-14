@@ -53,8 +53,12 @@ export const AuthContextProvider = ({ children }) => {
       .finally(() => setLoading(false));
   };
 
-  const logoutUser = () => {
-    signOut(auth);
+  const logoutUser = async () => {
+    try {
+      await signOut(auth);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const forgotPassword = (email) => {

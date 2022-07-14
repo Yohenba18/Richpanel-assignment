@@ -28,7 +28,7 @@ export default function Home() {
   }
 
   if (user) {
-    Router.push("/chatpage");
+    Router.push("/connect");
   }
   return (
     <Layout>
