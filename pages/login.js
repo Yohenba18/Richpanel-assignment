@@ -1,5 +1,6 @@
 import Layout from "../components/shared/layout";
 import Link from "next/link";
+import { useState } from "react";
 
 const login = () => {
   const [data, setData] = useState({
@@ -8,12 +9,13 @@ const login = () => {
   });
   const handlelogin = (e) => {
     e.preventDefault();
+    console.log(data);
   };
   return (
     <Layout>
       <form
         className="flex flex-col bg-white w-3/5 mx-auto py-10 rounded-md"
-        onSubmit={handleLogin}
+        onSubmit={handlelogin}
       >
         <div className="flex flex-col gap-5 w-2/3 mx-auto">
           <h1 className="text-center font-semibold text-xl">
@@ -59,7 +61,9 @@ const login = () => {
           <div>
             New to app{" "}
             <Link href="/">
-              <span className="text-background-primary font-bold">Sign in</span>
+              <span className="text-background-primary font-bold cursor-pointer">
+                Sign in
+              </span>
             </Link>
           </div>
         </div>

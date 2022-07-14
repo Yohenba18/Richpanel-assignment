@@ -2,11 +2,11 @@ import Link from "next/link";
 import { useState } from "react";
 import Layout from "../components/shared/layout";
 import { useAuth } from "../contexts/AuthContext";
+import Router from 'next/router'
 
 export default function Home() {
+  const { user, error, loading } = useAuth();
 
-  const {user} = useAuth()
-  console.log(user)
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -16,7 +16,7 @@ export default function Home() {
     e.preventDefault();
     console.log(data);
   };
-
+  
   return (
     <Layout>
       <form
@@ -76,7 +76,9 @@ export default function Home() {
           <div>
             Already have an account{" "}
             <Link href="/login">
-              <span className="text-background-primary font-bold">Login</span>
+              <span className="text-background-primary font-bold cursor-pointer">
+                Login
+              </span>
             </Link>
           </div>
         </div>
