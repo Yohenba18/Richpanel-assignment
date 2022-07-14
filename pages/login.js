@@ -1,8 +1,10 @@
 import Layout from "../components/shared/layout";
 import Link from "next/link";
 import { useState } from "react";
+import { useAuth } from "../contexts/AuthContext";
 
 const login = () => {
+  const { signInUser, forgotPassword } = useAuth();
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -10,6 +12,9 @@ const login = () => {
   const handlelogin = (e) => {
     e.preventDefault();
     console.log(data);
+    if (data.email && data.password) {
+      signInUser(data.email, data.password)
+    }
   };
   return (
     <Layout>

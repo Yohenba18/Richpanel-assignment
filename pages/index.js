@@ -2,21 +2,34 @@ import Link from "next/link";
 import { useState } from "react";
 import Layout from "../components/shared/layout";
 import { useAuth } from "../contexts/AuthContext";
-import Router from 'next/router'
+import Router from "next/router";
+import App from "next/app";
 
 export default function Home() {
-  const { user, error, loading } = useAuth();
+  const { user, error, loading, registerUser } = useAuth();
 
   const [data, setData] = useState({
     name: "",
-    email: "",
+    email: null,
     password: "",
   });
   const handleSignup = (e) => {
     e.preventDefault();
     console.log(data);
+    if (data.email && data.password && data.name) {
+      registerUser(data.email, data.password, data.name);
+    }
   };
-  
+
+  console.log(error);
+
+  if (loading) {
+    return <div>Loading.....</div>;
+  }
+
+  if (user) {
+    Router.push("/chatpage");
+  }
   return (
     <Layout>
       <form
@@ -28,6 +41,7 @@ export default function Home() {
           <div className="flex flex-col">
             Name
             <input
+              required
               type="text"
               className="border-2 rounded-md px-4 py-2"
               value={data.name}
@@ -42,6 +56,7 @@ export default function Home() {
           <div className="flex flex-col">
             Email
             <input
+              required
               type="email"
               className="border-2 rounded-md px-4 py-2"
               value={data.email}
@@ -56,6 +71,7 @@ export default function Home() {
           <div className="flex flex-col">
             Password
             <input
+              required
               type="password"
               className="border-2 rounded-md px-4 py-2"
               value={data.password}

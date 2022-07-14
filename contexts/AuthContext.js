@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../config/firebase";
 
-const AuthContext = createContext({});
+export const AuthContext = createContext({});
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -32,18 +32,16 @@ export const AuthContextProvider = ({ children }) => {
     return unsubscribe;
   }, []);
 
-  const registerUser = (name, email, password) => {
+  const registerUser = (email, password, name) => {
     setLoading(true);
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        return updateProfile(auth.currentUser, {
+    createUserWithEmailAndPassword(auth, String(email), password)
+      .then(() =>
+        updateProfile(auth.currentUser, {
           displayName: name,
-        });
-      })
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => setError(err))
+        })
+      )
+      .then((res) => console.log(res))
+      .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   };
 
